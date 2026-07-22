@@ -107,10 +107,63 @@ window.DEMO_DATA = Object.freeze({
       "Review our Portugal relocation plan"
     ],
     answers: {
-      "Can we afford another vacation?": "Yes—within the current plan, the Morgans can allocate up to $4,200 for an additional trip without reducing the emergency reserve or delaying the Portugal goal. The strongest option is using $2,080 of this month's unassigned cash and saving the balance over the next two months.",
-      "How close are we to retiring at 55?": "You are currently 29.6% funded toward the $1.8M financial-independence target. At the present contribution rate, the plan remains on track, with a projected range of $1.82M–$2.04M by age 55.",
-      "What changed this month?": "Net worth increased by $18,740. Investments contributed $14,900 of that growth, while household spending finished $620 below plan. The largest new decision is whether to raise the Portugal transfer by $420 per month.",
-      "Review our Portugal relocation plan": "The relocation fund is 58% complete. Keeping the current transfer creates an estimated $9,800 shortfall by 2029. Raising the monthly contribution from $1,040 to $1,460 closes the gap without affecting the tax reserve."
+      "Can we afford another vacation?": {
+        recommendation: "Yes — allocate up to $4,200 from unassigned cash and short-term savings without disrupting any active goal.",
+        why: "The Morgan household carries $2,080 in unassigned monthly cash and a reserve that exceeds the six-month target. A secondary trip does not threaten the emergency buffer or the Portugal fund.",
+        changes: "Net worth dips by $4,200 in the month of travel. The reserve remains above the minimum. No goal timelines are affected.",
+        watch: "If the Portugal transfer has not yet been increased, prioritize that decision before committing to additional travel spend."
+      },
+      "How close are we to retiring at 55?": {
+        recommendation: "Stay the course. Continue contributing $4,685 per month and avoid early withdrawals from the brokerage account.",
+        why: "At the current rate and an 11.8% annualized return, the portfolio is projected to reach $1.82–$2.04M by age 55 — meeting or exceeding the $1.8M independence target.",
+        changes: "You are currently 29.6% funded. At this pace, you cross the 50% mark in approximately four years.",
+        watch: "A sustained market return below 8% for two or more consecutive years would extend the timeline. Revisit the projection annually."
+      },
+      "What changed this month?": {
+        recommendation: "Capture this month's $620 spending surplus by directing it to the relocation fund.",
+        why: "Net worth increased by $18,740 — $14,900 from investment growth and $3,840 from household cash accumulation. Spending finished below plan for the third consecutive month.",
+        changes: "Investments grew 2.8%. The emergency reserve is fully funded at 8.4 months. The largest open decision remains the Portugal transfer amount.",
+        watch: "The relocation fund is the only area behind plan. Everything else is on or ahead of target."
+      },
+      "Review our Portugal relocation plan": null
+    }
+  },
+  scenarios: {
+    base: {
+      readinessScore: 72,
+      monthlyTransfer: 1040,
+      monthlySurplus: 6765,
+      runwayMonths: 8.4,
+      insightThird: {
+        type: "attention",
+        title: "Portugal goal needs a decision",
+        body: "Increasing the monthly transfer by $420 keeps the 2029 timeline intact."
+      },
+      conclusionText: "Alex and Taylor can still reach their goals, but the Portugal timeline remains exposed. Increasing the relocation transfer by $420\u00a0per month brings September\u00a02029 back on track.",
+      copilotPortugal: {
+        recommendation: "Raise the monthly relocation transfer from $1,040 to $1,460 before the end of this quarter.",
+        why: "At the current rate, the relocation fund will reach only $110,200 by September 2029 — a $9,800 shortfall. The extra $420 per month closes that gap exactly on schedule.",
+        changes: "Monthly surplus drops from $6,765 to $6,345. Cash runway adjusts from 8.4 to 8.1 months. Relocation readiness score rises from 72% to 88%.",
+        watch: "If household expenses rise above plan in any two-month period, revisit the transfer amount to protect the emergency reserve."
+      }
+    },
+    recommended: {
+      readinessScore: 88,
+      monthlyTransfer: 1460,
+      monthlySurplus: 6345,
+      runwayMonths: 8.1,
+      insightThird: {
+        type: "positive",
+        title: "Portugal transfer increased",
+        body: "The $1,460 monthly transfer keeps September 2029 on track. Surplus adjusts to $6,345."
+      },
+      conclusionText: "Alex and Taylor can fund the Portugal move, retire at 55, and take the Japan trip without liquidating investments. The increased relocation transfer keeps September\u00a02029 on track.",
+      copilotPortugal: {
+        recommendation: "Maintain the $1,460 monthly relocation transfer and review again in January 2027.",
+        why: "The funding gap is closed. At $1,460 per month the relocation fund reaches $120,000 by August 2029 — one month ahead of target.",
+        changes: "Monthly surplus is $6,345. Relocation readiness is 88%. Cash runway holds at 8.1 months — still above the six-month minimum.",
+        watch: "Monitor the euro exchange rate quarterly. A shift of more than 8% in EUR/USD may require adjusting the currency allocation earlier than planned."
+      }
     }
   }
 });

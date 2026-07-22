@@ -9,3 +9,39 @@ body.welcome-open{overflow:hidden}.welcome{position:fixed;inset:0;z-index:100;ba
 .welcome.hidden{transition:opacity .7s ease,visibility 0s linear .7s}
 @media(max-width:760px){.welcome-copy h1{font-size:clamp(42px,15vw,52px)}}
 @media(max-width:360px){.welcome{padding:20px 0}.welcome-copy{width:92vw}.welcome-copy h1{margin:18px 0}.welcome-status{margin:24px 0}}
+
+/* ── Decision card ──────────────────────────────────────────── */
+.decision-card{border:1px solid rgba(184,255,116,.25);border-radius:var(--radius);background:rgba(184,255,116,.04);padding:28px 32px;margin:16px 0;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.decision-card .eyebrow{margin-bottom:8px}
+.decision-card h3{font-size:clamp(17px,2vw,22px);letter-spacing:-.03em;margin:0 0 8px;font-weight:500}
+.decision-card>div:first-child>p:last-child{color:var(--muted);font-size:12px;margin:0;line-height:1.6;max-width:480px}
+.decision-toggle{display:flex;gap:10px;flex-shrink:0}
+.decision-btn{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);padding:11px 16px;border-radius:999px;font:500 11px "DM Mono",monospace;cursor:pointer;transition:.2s;white-space:nowrap}
+.decision-btn.active{color:var(--text);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)}
+.decision-btn.applied{background:var(--accent);color:#07110f;border-color:var(--accent)}
+@media(max-width:900px){.decision-card{flex-direction:column;align-items:flex-start}.decision-toggle{width:100%;flex-direction:column}.decision-btn{text-align:center}}
+
+/* ── Action insight card ────────────────────────────────────── */
+.insight.action-card{border-color:rgba(184,255,116,.22);background:linear-gradient(145deg,rgba(184,255,116,.07),rgba(255,255,255,.02))}
+.insight-action{margin-top:14px;border:0;background:none;color:var(--accent);font:500 11px "DM Mono",monospace;cursor:pointer;padding:0;letter-spacing:.06em;display:inline-flex;align-items:center;gap:5px;transition:.15s}
+.insight-action:hover{opacity:.75}
+
+/* ── Copilot structured answer ──────────────────────────────── */
+.answer-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.answer-section:first-of-type{border-top:none;margin-top:14px;padding-top:0}
+.answer-eyebrow{font:500 9px "DM Mono",monospace;color:var(--accent);letter-spacing:.16em;margin:0 0 6px}
+.answer-section>p:last-child{margin:0;color:#d4ddd8;line-height:1.75;font-size:13.5px}
+
+/* ── Chart meta + takeaway ──────────────────────────────────── */
+.chart-col{display:flex;flex-direction:column}
+.chart-meta{display:flex;justify-content:space-between;font:500 9px "DM Mono",monospace;color:var(--muted);letter-spacing:.1em;margin-bottom:6px}
+.takeaway{font-size:10px;color:var(--muted);margin:10px 0 0;letter-spacing:.02em;line-height:1.5;font-family:"DM Mono",monospace}
+
+/* ── Conclusion card ────────────────────────────────────────── */
+.conclusion-card{display:flex;justify-content:space-between;align-items:center;gap:32px;margin-top:18px;padding:clamp(28px,4vw,52px);border:1px solid rgba(120,232,200,.2);border-radius:var(--radius);background:linear-gradient(145deg,rgba(120,232,200,.055),rgba(255,255,255,.012))}
+.conclusion-verdict .eyebrow{margin-bottom:12px}
+.conclusion-verdict h2{font-size:clamp(22px,2.8vw,36px);letter-spacing:-.04em;margin:0 0 16px;font-weight:500}
+.conclusion-verdict p{color:#adbdb5;font-size:clamp(13px,1.3vw,15px);line-height:1.75;max-width:680px;margin:0}
+.conclusion-actions{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
+@media(max-width:760px){.conclusion-card{flex-direction:column}.conclusion-actions{width:100%}.conclusion-actions .ghost-action{text-align:center}}
+

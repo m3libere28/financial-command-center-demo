@@ -35,7 +35,7 @@
         <a class="nav-item" href="#investments"><span>◫</span><em>Invest</em></a>
         <a class="nav-item" href="#transition"><span>◎</span><em>Global</em></a>
         <a class="nav-item" href="#goals"><span>◇</span><em>Goals</em></a>
-        <a class="nav-item" href="#copilot"><span>✦</span><em>Copilot</em></a>
+        <a class="nav-item" href="#copilot"><span>✦</span><em>Decisions</em></a>
       </nav>
       <button class="reset" id="resetDemo" type="button" title="Reset demo">↺</button>
     </aside>
@@ -61,13 +61,24 @@
       <section class="feature-section reveal" id="investments">
         <div class="section-head"><div><p class="eyebrow">WEALTH ENGINE</p><h2>Built for the life ahead.</h2></div><span class="period">YTD +11.8%</span></div>
         <div class="investment-layout">
-          <article class="panel portfolio-hero"><div class="portfolio-copy"><p>INVESTED ASSETS</p><strong id="portfolioTotal"></strong><span>Projected at age 55</span><h3 id="projectionRange"></h3><p class="educational-note">Fictional projection for demonstration and education only. It is not financial advice or a guarantee.</p></div><div class="history-chart" id="historyChart" aria-label="Fictional portfolio growth history"></div></article>
+          <article class="panel portfolio-hero"><div class="portfolio-copy"><p>INVESTED ASSETS</p><strong id="portfolioTotal"></strong><span>Projected at age 55</span><h3 id="projectionRange"></h3><p class="educational-note">Fictional projection for demonstration and education only. It is not financial advice or a guarantee.</p></div><div class="chart-col"><div class="chart-meta"><span id="chartStart"></span><span id="chartEnd"></span></div><div class="history-chart" id="historyChart" aria-label="Fictional portfolio growth history"></div><p class="takeaway" id="chartTakeaway"></p></div></article>
           <article class="panel allocation-panel"><p class="eyebrow">ALLOCATION</p><div class="allocation-ring" id="allocationRing"><div><strong id="allocationPct">90%</strong><span>invested</span></div></div><div class="allocation-list" id="allocationList"></div></article>
         </div>
         <div class="investment-strip" id="investmentNotes"></div>
       </section>
       <section class="feature-section reveal" id="transition">
-        <div class="transition-hero panel"><div><p class="eyebrow">MAJOR LIFE TRANSITION</p><h2>Colorado → Portugal</h2><p>A coordinated view of funding, timing, currency, and the decisions required before the move.</p></div><div class="readiness"><small>TRANSITION READINESS</small><strong id="readinessScore"></strong><span>On plan, with one funding decision</span></div></div>
+        <div class="transition-hero panel"><div><p class="eyebrow">MAJOR LIFE TRANSITION</p><h2>Colorado → Portugal</h2><p>A coordinated view of funding, timing, currency, and the decisions required before the move.</p></div><div class="readiness"><small>TRANSITION READINESS</small><strong id="readinessScore"></strong><span id="readinessLabel">On plan, with one funding decision</span></div></div>
+        <div class="decision-card" id="decisionCard" aria-label="Relocation transfer decision">
+          <div>
+            <p class="eyebrow">DECISION REQUIRED</p>
+            <h3>Raise the monthly relocation transfer?</h3>
+            <p>At $1,040/mo the fund arrives $9,800 short of target. Raising to $1,460/mo closes the gap and locks in September 2029.</p>
+          </div>
+          <div class="decision-toggle">
+            <button class="decision-btn active" id="scenarioBase" type="button" aria-pressed="true">Keep current · $1,040/mo</button>
+            <button class="decision-btn" id="scenarioApply" type="button" aria-pressed="false">Apply recommendation · $1,460/mo ↗</button>
+          </div>
+        </div>
         <div class="transition-grid">
           <article class="panel"><div class="section-head"><div><p class="eyebrow">RELOCATION FUND</p><h2 id="transitionFund"></h2></div><span class="period" id="transitionDate"></span></div><div class="large-track"><i id="transitionProgress"></i></div><div class="funding-decision"><div><small>CURRENT TRANSFER</small><strong id="currentTransfer"></strong></div><span>→</span><div><small>RECOMMENDED</small><strong class="accent" id="recommendedTransfer"></strong></div></div></article>
           <article class="panel"><p class="eyebrow">CURRENCY POSITION</p><div class="currency-list" id="currencyList"></div><p class="panel-note">Gradual euro exposure begins before the household’s costs shift overseas.</p></article>
@@ -77,7 +88,17 @@
       </section>
       <section class="goals-section reveal" id="goals"><div class="section-head"><div><p class="eyebrow">LIFE IN MOTION</p><h2>Your goals, connected to the plan.</h2></div><a class="text-button" href="#copilot">Explore all goals ↗</a></div><div class="goal-grid" id="goalGrid"></div></section>
       <section class="copilot reveal" id="copilot"><div class="copilot-glow"></div><div class="copilot-intro"><span class="copilot-mark">✦</span><p class="eyebrow">FINANCIAL COPILOT</p><h2>Ask the question behind the numbers.</h2><p>Copilot reads this fictional household snapshot and explains tradeoffs in plain language.</p><p class="educational-note">Scripted fictional responses for demonstration and education only—not personalized financial advice.</p></div><div class="prompt-grid" id="promptGrid"></div><div class="answer-box" id="answerBox" role="status" aria-live="polite" aria-atomic="true"><p>Select a question to begin.</p></div></section>
-      <aside class="preview-cta reveal" aria-labelledby="previewCtaTitle"><div><p class="eyebrow">EXPLORE THE STORY</p><h2 id="previewCtaTitle">See how one decision connects across the plan.</h2><p>No sign-up, tracking, or personal information required.</p></div><a class="primary-action" href="#copilot">Try the guided Copilot <span>↗</span></a></aside>
+      <aside class="conclusion-card reveal" id="conclusionCard" aria-labelledby="conclusionTitle">
+        <div class="conclusion-verdict">
+          <p class="eyebrow">THE VERDICT</p>
+          <h2 id="conclusionTitle">The Morgan household financial outlook</h2>
+          <p id="conclusionText"></p>
+        </div>
+        <div class="conclusion-actions">
+          <button class="primary-action" id="replayBtn" type="button">Replay the decision</button>
+          <a class="ghost-action" href="#transition">View relocation plan ↑</a>
+        </div>
+      </aside>
       <footer><div><strong>Financial Command Center</strong><span>Demo build · fictional data only</span></div><button id="footerReset" type="button">Reset demo</button></footer>
     </main>
   </div>

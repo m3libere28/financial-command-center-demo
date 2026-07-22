@@ -1,6 +1,9 @@
 name: Deploy Public Demo
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -27,8 +30,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir _site
+          mkdir -p _site
           cp index.html app.js data.js styles.css phase2.css icon.svg _site/
+          touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07110f">
+  <title>Financial Command Center — Demo</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeDescription" tabindex="-1">
+    <div class="welcome-grid"></div>
+    <div class="welcome-copy">
+      <p class="eyebrow">GLOBAL HOUSEHOLD EDITION · FICTIONAL DEMO</p>
+      <h1 id="welcomeTitle">One financial life.<br><span>Fully in view.</span></h1>
+      <p id="welcomeDescription">Step inside the Morgan Household: a connected financial story spanning today’s cash, long-term wealth, and an international move.</p>
+      <div class="welcome-status"><span><i></i> Financial health: Excellent</span><span>Updated July 2026</span></div>
+      <button id="enterDemo" type="button">Enter command center <b>↗</b></button>
+    </div>
+  </div>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="demo-banner"><span>DEMO WORKSPACE</span> All people, accounts, balances, and recommendations are fictional.</div>
+  <div class="shell">
+    <aside class="rail" aria-label="Primary navigation">
+      <a class="mark" href="#today" aria-label="Financial Command Center home">F<span>C</span></a>
+      <nav>
+        <a class="nav-item active" href="#today"><span>⌂</span><em>Today</em></a>
+        <a class="nav-item" href="#flow"><span>↗</span><em>Flow</em></a>
+        <a class="nav-item" href="#investments"><span>◫</span><em>Invest</em></a>
+        <a class="nav-item" href="#transition"><span>◎</span><em>Global</em></a>
+        <a class="nav-item" href="#goals"><span>◇</span><em>Goals</em></a>
+        <a class="nav-item" href="#copilot"><span>✦</span><em>Copilot</em></a>
+      </nav>
+      <button class="reset" id="resetDemo" type="button" title="Reset demo">↺</button>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div><p class="micro">FINANCIAL COMMAND CENTER</p><p class="edition">Global Household Edition</p></div>
+        <div class="household-chip"><span class="signal"></span><div><strong id="householdName">Morgan Household</strong><small>Boulder, Colorado</small></div></div>
+      </header>
+      <section class="hero reveal" id="today">
+        <div class="hero-copy"><p class="eyebrow">TODAY · JULY 2026</p><h1>Good morning,<br><span id="primaryName">Alex.</span></h1><p class="hero-summary" id="headline"></p><div class="hero-actions"><a class="primary-action" href="#copilot">Ask Copilot <span>↗</span></a><button class="ghost-action" id="reviewBtn" type="button">View monthly review</button></div></div>
+        <div class="health-orbit" aria-label="Financial health score"><svg viewBox="0 0 220 220" role="img" aria-labelledby="healthTitle"><title id="healthTitle">Financial health score 91, excellent</title><circle class="orbit-track" cx="110" cy="110" r="83"></circle><circle class="orbit-value" cx="110" cy="110" r="83"></circle></svg><div class="orbit-center"><small>FINANCIAL HEALTH</small><strong id="healthScore">91</strong><span id="healthLabel">Excellent</span></div><div class="orbit-note">↑ 4 points since January</div></div>
+      </section>
+      <section class="metric-grid reveal" aria-label="Household summary">
+        <article class="metric-card featured"><p>NET WORTH</p><strong id="netWorth"></strong><span>+$18,740 this month</span><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="metric-card"><p>CASH RUNWAY</p><strong><span id="runway"></span> <small>months</small></strong><span>Reserve fully funded</span></article>
+        <article class="metric-card"><p>INVESTMENTS</p><strong id="investmentsValue"></strong><span id="investmentChange"></span></article>
+        <article class="metric-card"><p>TAX RESERVE</p><strong id="taxReserve"></strong><span>100% of target</span></article>
+      </section>
+      <section class="story-grid reveal" id="flow">
+        <article class="panel flow-panel"><div class="section-head"><div><p class="eyebrow">MONTHLY FLOW</p><h2>Where the money moved</h2></div><span class="period">JUL 01–31</span></div><div class="flow-total"><div><small>INCOME</small><strong id="monthlyIncome"></strong></div><span>→</span><div><small>SPENDING</small><strong id="monthlySpending"></strong></div><span>→</span><div><small>SURPLUS</small><strong class="accent" id="monthlySurplus"></strong></div></div><div class="flow-bars" id="flowBars"></div></article>
+        <aside class="panel brief-panel"><div class="section-head"><div><p class="eyebrow">COMMAND BRIEF</p><h2>Three things matter</h2></div></div><div class="insight-list" id="insights"></div></aside>
+      </section>
+      <section class="feature-section reveal" id="investments">
+        <div class="section-head"><div><p class="eyebrow">WEALTH ENGINE</p><h2>Built for the life ahead.</h2></div><span class="period">YTD +11.8%</span></div>
+        <div class="investment-layout">
+          <article class="panel portfolio-hero"><div class="portfolio-copy"><p>INVESTED ASSETS</p><strong id="portfolioTotal"></strong><span>Projected at age 55</span><h3 id="projectionRange"></h3><p class="educational-note">Fictional projection for demonstration and education only. It is not financial advice or a guarantee.</p></div><div class="history-chart" id="historyChart" aria-label="Fictional portfolio growth history"></div></article>
+          <article class="panel allocation-panel"><p class="eyebrow">ALLOCATION</p><div class="allocation-ring" id="allocationRing"><div><strong>90%</strong><span>invested</span></div></div><div class="allocation-list" id="allocationList"></div></article>
+        </div>
+        <div class="investment-strip" id="investmentNotes"></div>
+      </section>
+      <section class="feature-section reveal" id="transition">
+        <div class="transition-hero panel"><div><p class="eyebrow">MAJOR LIFE TRANSITION</p><h2>Colorado → Portugal</h2><p>A coordinated view of funding, timing, currency, and the decisions required before the move.</p></div><div class="readiness"><small>TRANSITION READINESS</small><strong id="readinessScore"></strong><span>On plan, with one funding decision</span></div></div>
+        <div class="transition-grid">
+          <article class="panel"><div class="section-head"><div><p class="eyebrow">RELOCATION FUND</p><h2 id="transitionFund"></h2></div><span class="period" id="transitionDate"></span></div><div class="large-track"><i id="transitionProgress"></i></div><div class="funding-decision"><div><small>CURRENT TRANSFER</small><strong id="currentTransfer"></strong></div><span>→</span><div><small>RECOMMENDED</small><strong class="accent" id="recommendedTransfer"></strong></div></div></article>
+          <article class="panel"><p class="eyebrow">CURRENCY POSITION</p><div class="currency-list" id="currencyList"></div><p class="panel-note">Gradual euro exposure begins before the household’s costs shift overseas.</p></article>
+          <article class="panel milestone-panel"><p class="eyebrow">MILESTONES</p><div id="milestoneList"></div></article>
+          <article class="panel"><p class="eyebrow">RISK MONITOR</p><div class="risk-list" id="riskList"></div></article>
+        </div>
+      </section>
+      <section class="goals-section reveal" id="goals"><div class="section-head"><div><p class="eyebrow">LIFE IN MOTION</p><h2>Your goals, connected to the plan.</h2></div><button class="text-button" type="button">Explore all goals ↗</button></div><div class="goal-grid" id="goalGrid"></div></section>
+      <section class="copilot reveal" id="copilot"><div class="copilot-glow"></div><div class="copilot-intro"><span class="copilot-mark">✦</span><p class="eyebrow">FINANCIAL COPILOT</p><h2>Ask the question behind the numbers.</h2><p>Copilot reads this fictional household snapshot and explains tradeoffs in plain language.</p><p class="educational-note">Scripted fictional responses for demonstration and education only—not personalized financial advice.</p></div><div class="prompt-grid" id="promptGrid"></div><div class="answer-box" id="answerBox" role="status" aria-live="polite" aria-atomic="true"><p>Select a question to begin.</p></div></section>
+      <aside class="preview-cta reveal" aria-labelledby="previewCtaTitle"><div><p class="eyebrow">EXPLORE THE STORY</p><h2 id="previewCtaTitle">See how one decision connects across the plan.</h2><p>No sign-up, tracking, or personal information required.</p></div><a class="primary-action" href="#copilot">Try the guided Copilot <span>↗</span></a></aside>
+      <footer><div><strong>Financial Command Center</strong><span>Demo build · fictional data only</span></div><button id="footerReset" type="button">Reset demo</button></footer>
+    </main>
+  </div>
+  <script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>

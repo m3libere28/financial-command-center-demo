@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Financial Command Center demo</title>
+  <defs>
+    <linearGradient id="accent" x1="96" y1="416" x2="416" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78f2e8"/>
+      <stop offset="1" stop-color="#b8ff74"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#07110f"/>
+  <circle cx="256" cy="256" r="166" fill="none" stroke="#b8ff74" stroke-opacity=".18" stroke-width="8"/>
+  <path d="M132 342h248" stroke="#eef7f1" stroke-opacity=".3" stroke-width="12" stroke-linecap="round"/>
+  <path d="m148 320 70-78 58 42 92-108" fill="none" stroke="url(#accent)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="148" cy="320" r="16" fill="#78f2e8"/>
+  <circle cx="218" cy="242" r="16" fill="#8df8ca"/>
+  <circle cx="276" cy="284" r="16" fill="#9cffad"/>
+  <circle cx="368" cy="176" r="16" fill="#b8ff74"/>
+</svg>

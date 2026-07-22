@@ -1,0 +1,60 @@
+name: Demo QA and Privacy
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  demo-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate sanitized demo
+        shell: bash
+        run: |
+          set -euo pipefail
+          runtime=(index.html app.js data.js styles.css phase2.css icon.svg)
+          for file in "${runtime[@]}"; do
+            test -f "$file"
+          done
+
+          node --check app.js
+          node --check data.js
+
+          if grep -niE 'Asprilla|Medaglia|Helbert|Emily|Michelangelo|Benimaclet|Valencia|Oakland|Florida|VA disability|Digital Nomad Visa|supabase|service[_-]?role|anon[_-]?key|openai[_-]?api|authorization:[[:space:]]*bearer|localStorage|sessionStorage|document\.cookie|fetch\(|analytics|gtag\(|googletagmanager|mixpanel|posthog' "${runtime[@]}"; then
+            echo 'Sanitized runtime contains a prohibited privacy, integration, storage, or tracking marker.' >&2
+            exit 1
+          fi
+
+          if grep -niE 'sk-(proj-)?[A-Za-z0-9_-]{20,}|eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{10,}|DATABASE_PASSWORD[[:space:]]*=|DB_PASSWORD[[:space:]]*=|postgresql://[^[:space:]:]+:[^[:space:]@]+@' "${runtime[@]}"; then
+            echo 'Sanitized runtime contains a credential-like value.' >&2
+            exit 1
+          fi
+
+          grep -q 'fictional: true' data.js
+          grep -q 'mode: "demo"' data.js
+          grep -q 'DEMO WORKSPACE' index.html
+          grep -q 'href="./icon.svg"' index.html
+
+      - name: Validate local references
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs');
+          const html = fs.readFileSync('index.html', 'utf8');
+          const refs = [...html.matchAll(/(?:src|href)="([^"]+)"/g)].map((match) => match[1]);
+          const missing = refs
+            .filter((ref) => !/^(?:https?:|#|mailto:|tel:|data:)/.test(ref))
+            .map((ref) => ref.replace(/^\.\//, '').split(/[?#]/)[0])
+            .filter((ref) => ref && !fs.existsSync(ref));
+          if (missing.length) {
+            console.error(`Missing local references: ${[...new Set(missing)].join(', ')}`);
+            process.exit(1);
+          }
+          NODE
